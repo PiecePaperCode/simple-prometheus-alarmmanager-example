@@ -1,0 +1,9 @@
+route:
+  receiver: 'default'
+
+receivers:
+- name: 'default'
+  webhook_configs:
+    - url: 'http://192.168.1.12:9999/hook1'
+    - url: 'http://192.168.1.12:9999/hook2'
+
