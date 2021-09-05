@@ -1,0 +1,11 @@
+groups:
+  - name: cpu-node
+    rules:
+      - record: job_instance_mode:node_cpu_seconds:avg_rate1m
+        expr: avg by (job, instance, mode) (rate(node_cpu_seconds_total[1m]))
+  - name: alert
+    rules:
+      - alert: HighRequestLatency
+        expr: job_instance_mode:node_cpu_seconds:avg_rate1m{instance="192.168.1.12:9100", job="node", mode="system"} > 0
+        for: 5s
+
